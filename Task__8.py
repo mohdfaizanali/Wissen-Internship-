@@ -1,4 +1,3 @@
-#from Oracle to Postgres
 import pandas as pd
 from sqlalchemy import create_engine, text
 
@@ -20,24 +19,9 @@ query_diff_ora = f"""
 diff_ora = pd.read_sql(query_diff_ora, oracle_engine)
 print(diff_ora)
 
-# Define the upsert query
-upsert_query = f"""
-    INSERT INTO emp_table1 ("Emp_id", "Last_updated")
-    VALUES (:Emp_id, CURRENT_TIMESTAMP)
-    ON CONFLICT ("Emp_id") DO UPDATE
-    SET "Last_updated" = EXCLUDED."Last_updated";
-"""
-
-# Load differing data into PostgreSQL table emp_table1 using upsert
+# Load differing data into PostgreSQL table emp_table1
 if not diff_ora.empty:
-    try:
-        with postgres_engine.connect() as connection:
-            for index, row in diff_ora.iterrows():
-                params = {'Emp_id': row['Emp_id'], 'Emp_dept': row['Emp_dept']}
-                connection.execute(text(upsert_query), **params)
-        print("Differing data loaded into emp_table1 in PostgreSQL database.")
-    except Exception as e:
-        print("Error occurred during upsert operation:", e)
+    diff_ora.to_sql('emp_table1', postgres_engine, if_exists='append', index=False)
+    print("Differing data loaded into emp_table1 in PostgreSQL database.")
 else:
     print("No differing data found in Oracle. Nothing to load.")
-
