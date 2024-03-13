@@ -6,7 +6,6 @@ oracle_engine = create_engine('oracle://system:5394@localhost:1521/xe')
 
 file_path = 'C:\\Users\\Faizan Ali\\Downloads\\DATETIME.xlsx'
 df = pd.read_excel(file_path)
-
 df['Emp_joining_date'] = pd.to_datetime(df['Emp_joining_date'], format='%Y-%m-%d %H:%M:%S')
 df['Last_updated'] = pd.to_datetime(df['Last_updated'], format='%Y-%m-%d %H:%M:%S')
 df['Emp_id'] = pd.to_numeric(df['Emp_id'],)
