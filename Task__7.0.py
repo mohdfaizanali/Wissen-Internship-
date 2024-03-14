@@ -34,7 +34,7 @@ df_oracle.info()
 # Merge the dataframes
 merged_df = pd.merge(df_pg, df_oracle, how='outer', indicator=True)
 
-# Select rows only present in PostgreSQL dataframe
+# Select rows only present in Postgres dataframe
 diff_pg = merged_df[merged_df['_merge'] == 'left_only'].drop('_merge', axis=1)
 
 # Select rows only present in Oracle dataframe
