@@ -12,9 +12,8 @@ database = os.environ['postgres_database']
 engine = create_engine(f'postgresql://{user}:{pwd}@{host}:{port}/{database}')
 
 file_path1 = os.environ.get('file_path')
-print("File path:", file_path1)  # Print the value of the environmental variable
-
 df = pd.read_excel(file_path1)
+
 df.to_sql("emp_table6",engine,if_exists='replace', index=False)
 
 print(df)

@@ -1,36 +1,30 @@
 import cx_Oracle
 import psycopg2
+import os
 
-# Oracle database connection details
-oracle_username = 'system'
-oracle_password = '5394'
-oracle_host = 'localhost'
-oracle_port = '1521'
-oracle_service = 'xe'
+# or_user = os.environ['oracle_username']
+# or_pwd = os.environ['oracle_password']
+or_host = os.environ['oracle_host']
+or_port = os.environ['oracle_port']
+or_service = os.environ['oracle_service']
 
-# PostgreSQL database connection details
-postgres_username = 'postgres'
-postgres_password = 'Postgres'
-postgres_host = 'localhost'
-postgres_port = '5432'
-postgres_database = 'demo'
 
 # Connect to Oracle database
 oracle_connection = cx_Oracle.connect(
-    user=oracle_username,
-    password=oracle_password,
-    dsn=f"{oracle_host}:{oracle_port}/{oracle_service}"
+    user=os.environ['oracle_username'],
+    password=os.environ['oracle_password'],
+    dsn=f"{or_host}:{or_port}/{or_service}"
 )
 
 oracle_cursor = oracle_connection.cursor()
 
 # Connect to PostgreSQL database
 postgres_connection = psycopg2.connect(
-    user=postgres_username,
-    password=postgres_password,
-    host=postgres_host,
-    port=postgres_port,
-    database=postgres_database
+    user=os.environ['postgres_username'],
+    password=os.environ['postgres_password'],
+    host=os.environ['postgres_host'],
+    port=os.environ['postgres_port'],
+    database=os.environ['postgres_database']
 )
 
 postgres_cursor = postgres_connection.cursor()
