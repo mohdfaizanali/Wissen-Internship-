@@ -19,7 +19,7 @@ pg_database = os.environ['postgres_database']
 # Connect to Oracle database using SQLAlchemy
 oracle_engine = create_engine(f'oracle+cx_oracle://{or_user}:{or_pwd}@{or_host}:{or_port}/{or_service}')
 
-# Connect to PostgreSQL database using SQLAlchemy
+# Connect to Postgres database using SQLAlchemy
 postgres_engine = create_engine(f'postgresql://{pg_user}:{pg_pwd}@{pg_host}:{pg_port}/{pg_database}')
 
 # Define table name
