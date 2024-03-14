@@ -59,7 +59,7 @@ create_table_query = create_table_query[:-2] + ")"
 postgres_cursor.execute(create_table_query)
 
 
-# Fetch data from Oracle and insert into PostgreSQL
+# Fetch data from Oracle and insert into Postgres
 oracle_cursor.execute(f"SELECT * FROM {table_name}")
 for row in oracle_cursor.fetchall():
     cleaned_row = []
