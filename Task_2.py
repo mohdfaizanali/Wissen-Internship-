@@ -17,6 +17,6 @@ df = pd.read_excel(file_path1)
 dtype_mapping = {'Emp_joining_date': sqlalchemy.TIMESTAMP,
                  'Last_updated': sqlalchemy.TIMESTAMP}
 
-df.to_sql("emp_table8",engine,if_exists='replace', index=False, dtype=dtype_mapping)
+df.to_sql("emp_table1",engine,if_exists='replace', index=False, dtype=dtype_mapping)
 
 print(df)

@@ -1,30 +1,30 @@
 import pandas as pd
 from sqlalchemy import create_engine, MetaData, Table, Column, String, Integer, DateTime
+import os
 
 # Oracle database connection details
-oracle_username = 'system'
-oracle_password = '5394'
-oracle_host = 'localhost'
-oracle_port = '1521'
-oracle_service = 'xe'
+or_user = os.environ['oracle_username']
+or_pwd = os.environ['oracle_password']
+or_host = os.environ['oracle_host']
+or_port = os.environ['oracle_port']
+or_service = os.environ['oracle_service']
 
-oracle_engine = create_engine(
-    f'oracle+cx_oracle://{oracle_username}:{oracle_password}@{oracle_host}:{oracle_port}/{oracle_service}')
+# Connect to Oracle database using SQLAlchemy
+oracle_engine = create_engine(f'oracle+cx_oracle://{or_user}:{or_pwd}@{or_host}:{or_port}/{or_service}')
 
 # PostgreSQL database connection details
-postgres_username = 'postgres'
-postgres_password = 'Postgres'
-postgres_host = 'localhost'
-postgres_port = '5432'
-postgres_database = 'demo'
+pg_user = os.environ['postgres_username']
+pg_pwd = os.environ['postgres_password']
+pg_host = os.environ['postgres_host']
+pg_port = os.environ['postgres_port']
+pg_database = os.environ['postgres_database']
 
-postgres_engine = create_engine(
-    f'postgresql://{postgres_username}:{postgres_password}@{postgres_host}:{postgres_port}/{postgres_database}')
+# Connect to PostgreSQL database using SQLAlchemy
+postgres_engine = create_engine(f'postgresql://{pg_user}:{pg_pwd}@{pg_host}:{pg_port}/{pg_database}')
 
 query = "SELECT * FROM emp_table1"
 df_pg = pd.read_sql(query, postgres_engine)
 df_pg.info()
-
 
 df_oracle = pd.read_sql(query, oracle_engine)
 df_oracle.info()
