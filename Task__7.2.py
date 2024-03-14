@@ -43,7 +43,7 @@ if not diff_ora.empty:
     existing_records = pd.read_sql(existing_records_query, postgres_engine)
     print(primary_key_values)
 
-    # Delete existing records from PostgreSQL table if found
+    # Delete existing records from Postgres table if found
     if not existing_records.empty:
         with postgres_engine.connect() as connection:
             for index, row in existing_records.iterrows():
