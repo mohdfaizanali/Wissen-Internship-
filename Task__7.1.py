@@ -35,7 +35,7 @@ query_diff_ora = f"""
 diff_ora = pd.read_sql(query_diff_ora, oracle_engine)
 print(diff_ora)
 
-# Load differing data into PostgreSQL table emp_table1
+# Load differing data into Postgres table emp_table1
 if not diff_ora.empty:
     diff_ora.to_sql('emp_table1', postgres_engine, if_exists='append', index=False)
     print("Differing data loaded into emp_table1 in PostgreSQL database.")
