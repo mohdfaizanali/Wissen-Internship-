@@ -9,7 +9,7 @@ or_host = os.environ['oracle_host']
 or_port = os.environ['oracle_port']
 or_service = os.environ['oracle_service']
 
-# PostgreSQL database connection details
+# Postgres database connection details
 pg_user = os.environ['postgres_username']
 pg_pwd = os.environ['postgres_password']
 pg_host = os.environ['postgres_host']
