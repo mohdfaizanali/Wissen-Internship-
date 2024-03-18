@@ -16,7 +16,7 @@ pg_host = os.environ['postgres_host']
 pg_port = os.environ['postgres_port']
 pg_database = os.environ['postgres_database']
 
-# Create database connections
+# Create  database connections
 oracle_engine = create_engine(f'oracle+cx_oracle://{or_user}:{or_pwd}@{or_host}:{or_port}/{or_service}')
 postgres_engine = create_engine(f'postgresql://{pg_user}:{pg_pwd}@{pg_host}:{pg_port}/{pg_database}')
 
