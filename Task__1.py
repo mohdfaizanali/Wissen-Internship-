@@ -17,7 +17,7 @@
 # df.to_sql("emp_table6",engine,if_exists='replace', index=False)
 #
 # print(df)
-
+# After Adding functions , try and except block and oops
 import sqlalchemy
 from sqlalchemy import create_engine
 import pandas as pd
