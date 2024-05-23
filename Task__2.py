@@ -19,7 +19,7 @@ dtype_mapping = {'Emp_joining_date': sqlalchemy.TIMESTAMP,
                  'Last_updated': sqlalchemy.TIMESTAMP}
 # column_data_types = {'Emp_id': types.BIGINT, 'Emp_joining_date': types.TIMESTAMP, 'Last_updated': types.TIMESTAMP}
 
-df.to_sql("emp_table1",engine,if_exists='replace', index=False, dtype=dtype_mapping)
+df.to_sql("emp_table9",engine,if_exists='replace', index=False, dtype=dtype_mapping)
 # df.to_sql(name='emp_table1', con=engine, if_exists='replace', index=False, schema='staff', dtype=column_data_types)
 
 print(df)
